@@ -20,13 +20,17 @@ Airbnb has no opinion on some things, or we felt the need to be particularly exp
 
 Ideally, naming conventions for project-specific words and terminology should be determined early on in the project and be posted somewhere visible (perhaps pinned in the project Slack channel).
 
-All variables should be named in camelCase. Some words and phrases may have ambiguous camelCasing, such as "make an HTTP request". Is it makeHttpRequest, or makeHTTPRequest?
+All variables should be named in camelCase. Some words and phrases may have ambiguous camelCasing, such as "HTTP Request"? Is it `httpRequest`, or `HTTPRequest`?
 
-In such cases, [Google has a good, nearly deterministic scheme for camelCasing](https://google.github.io/styleguide/jsguide.html#naming-camel-case-defined). Any names that remain ambiguous with the scheme should be discussed with the team.
+In such cases, [Google has a good, nearly deterministic scheme for camelCasing](https://google.github.io/styleguide/jsguide.html#naming-camel-case-defined). To answer the above question using this scheme, it should be `httpRequest`. Any names that remain ambiguous with the scheme should be discussed with the team.
 
-##### PascalCase vs camelCase
+##### Naming Files
 
-When to use? tbd
+In general, PascalCase should be used only for classes, constructors, and function libraries. Everything else should be written in camelCase.
+
+File names and export names should match exactly.
+
+React files should be given the extension `.jsx` to make it clear that they are react components.
 
 ### Promises
 
@@ -34,26 +38,22 @@ Complex promise chains should be broken out into their own functions as such:
 
 ```
 function doThis(result) {
-  // ...
+  // A lot of code
 }
 function doThat(result) {
-  // ...
+  // Even more code!
 }
 function handleError(error) {
-  // ...
-}
-function done() {
-  // ...
+  // Lot of error code.
 }
 
 return doSomething(foo)
   .then(doThis)
   .then(doThat)
-  .catch(handleError)
-  .finally(done);
+  .catch(handleError); // end chain w/ semicolon
 ```
 
-Simple promise logic can be done in-line, but indented.
+Simple promise logic can be done in-line, but indented. As a rule of thumb, in-line promise code shouldn't be more than three or four lines.
 
 ```
 new Promise(function(resolve, reject) {
@@ -93,6 +93,6 @@ Horizontal alignment is adding spaces so that things line up horizontally, for e
 };
 ```
 
-Although not mentioned in Airbnb's style guide, Google's style guide suggests avoiding it, quoted below, as such we also discourage it.
+Although not mentioned in Airbnb's style guide, they take an implicit stance on it by disallowing more than one space before or after equal signs. Google's style guide is more explicit about it, quoted below, as such we also discourage it.
 
 >Alignment can aid readability, but it creates problems for future maintenance. Consider a future change that needs to touch just one line. This change may leave the formerly-pleasing formatting mangled, and that is allowed. More often it prompts the coder (perhaps you) to adjust whitespace on nearby lines as well, possibly triggering a cascading series of reformattings. That one-line change now has a "blast radius". This can at worst result in pointless busywork, but at best it still corrupts version history information, slows down reviewers and exacerbates merge conflicts.

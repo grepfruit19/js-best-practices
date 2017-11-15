@@ -24,7 +24,7 @@ All variables should be named in camelCase. Some words and phrases may have ambi
 
 Additionally, it's preferable that words not be shortened. E.g., publicKey should not be shortened to pubKey.
 
-Any names that remain ambiguous using the above conventions should be consulted with the team.
+Any names that remain ambiguous using the above conventions should be consulted with the team. Additionally, any names that will be used heavily throughout the application should be detailed out (for example, should we use orderNumber, orderId, etc)
 
 ##### Naming Files
 
